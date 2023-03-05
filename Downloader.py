@@ -53,15 +53,15 @@ else:
 
             print('Título = ', yt.title)
 
-            print('Baixando...')
-
-            resolucoes = yt.streams.all()
-
-            for i in resolucoes:  # mostra as resoluções disponíveis
+            resolucoes = yt.streams.filter(progressive=True)
+            for i in resolucoes:
                 print(i)
-            x = int(input("Qual a resolução desejada? "))
+
+            x = int(input("Digite a 'itag' das configurações desejadas "))
 
             ys = yt.streams.get_by_itag(x)
+            
+            print('Baixando...')
 
             download_dir = os.path.join(os.path.expanduser("~"), "Videos", "Videos baixados")
 
