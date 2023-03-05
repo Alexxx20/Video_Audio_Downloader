@@ -10,12 +10,11 @@ if resposta.lower() in ["yes",'sim','s']:
             for link in links:
                 try:
                     from pytube import YouTube
-                    from moviepy.editor import *
                     yt = YouTube(link)
                     print('Título = ', yt.title)
                     print('Baixando...')
                     stream = yt.streams.filter(only_audio=True).first()
-                    download_dir = os.path.join(os.path.expanduser("~"), "Musicas", "Musicas baixadas")
+                    download_dir = os.path.join(os.path.expanduser("~"), "Downloads", "Musicas baixadas")
 
                     if not os.path.exists(download_dir):
                         os.makedirs(download_dir)
@@ -38,7 +37,6 @@ if resposta.lower() in ["yes",'sim','s']:
 
         else:
             result = subprocess.run(['pip', 'install', 'pytube'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            result = subprocess.run(['pip', 'install', 'moviepy'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             if result.returncode == 0:
                 print("A biblioteca pytube foi instalada com sucesso!")
             else:
