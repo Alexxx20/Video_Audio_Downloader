@@ -2,12 +2,11 @@ import os
 
 links = input('Insira os links: ').split()
 print('Deseja salvar o vídeo como áudio?')
-resposta = input("")
+resposta = input("")    
 
-if resposta.lower() in ["yes",'sim','s']:  
+if resposta.lower() in ["yes", 'sim', 's']:
     try:
-        if resposta.lower() in ["yes", 'sim', 's']:
-            for link in links:
+        for link in links:
                 try:
                     from pytube import YouTube
                     yt = YouTube(link)
@@ -43,6 +42,7 @@ if resposta.lower() in ["yes",'sim','s']:
                 print("Ocorreu um erro ao instalar a biblioteca pytube, tente instalá-la manualmente")
                 print(result.stderr.decode('utf-8'))
         print("Reinicie o programa")
+        
 else:
     try:
         from pytube import YouTube
